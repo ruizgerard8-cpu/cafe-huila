@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#f7f3ea] text-[#2b2b2b]">
+    <div className="min-h-screen bg-[#f7f3ea] text-[#1f1f1f] font-sans">
 
       {/* HERO */}
-      <div
-        className="relative h-[85vh] flex items-center justify-center text-center text-white bg-cover bg-center"
+      <section
+        className="relative h-[90vh] flex items-center justify-center text-center text-white bg-cover bg-center"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1509042239860-f550ce710b93')",
@@ -17,81 +17,113 @@ export default function App() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="relative max-w-3xl px-6"
+          className="relative max-w-4xl px-6"
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+          <h1 className="text-5xl md:text-7xl font-light tracking-wide">
             Finca Alto Horizonte
           </h1>
-          <p className="text-lg md:text-xl mb-6">
-            Café de especialidad de alta gastronomía • Origen Huila • Hasta 92 puntos SCA
+
+          <p className="mt-6 text-lg md:text-xl text-white/90">
+            Café de especialidad de origen Huila · 92 puntos SCA · Alta gastronomía
           </p>
 
           <a
             href="#historia"
-            className="inline-block bg-white text-black px-6 py-3 rounded-full font-semibold"
+            className="mt-10 inline-block bg-white text-black px-8 py-3 rounded-full font-medium hover:scale-105 transition"
           >
             Conocer la finca
           </a>
         </motion.div>
-      </div>
+      </section>
 
-      {/* CALIDAD */}
-      <section className="max-w-6xl mx-auto py-20 px-6">
-        <h2 className="text-3xl font-bold text-center mb-12">
-          Calidad del café
+      {/* VALUE */}
+      <section className="max-w-6xl mx-auto py-24 px-6">
+        <h2 className="text-center text-3xl md:text-4xl font-light mb-16">
+          Café de origen excepcional
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="bg-white p-6 rounded-2xl shadow">
-            Cultivo de altura
-          </div>
-          <div className="bg-white p-6 rounded-2xl shadow">
-            92 puntos SCA
-          </div>
-          <div className="bg-white p-6 rounded-2xl shadow">
-            Origen Colombia
-          </div>
-        </div>
-      </section>
-
-      {/* HISTORIA */}
-      <section id="historia" className="bg-white py-20 px-6 text-center max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold mb-6">Nuestra historia</h2>
-        <p>
-          Finca familiar en La Plata, Huila. Cultivamos café a más de 1.900 m.s.n.m.
-          con procesos artesanales y enfoque en café de especialidad.
-        </p>
-      </section>
-
-      {/* CAFÉ */}
-      <section className="max-w-6xl mx-auto py-20 px-6 text-center">
-        <h2 className="text-3xl font-bold mb-12">Nuestro café</h2>
-
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-10">
           {[
-            ["Origen", "La Plata, Huila"],
-            ["Altitud", "1.900 m.s.n.m."],
-            ["Variedades", "Castillo, Caturra, Geisha"],
-            ["Proceso", "Lavado fermentación prolongada"],
-            ["Recolección", "Manual selectiva"],
-            ["Calidad", "Hasta 92 SCA"]
+            {
+              title: "Altura extrema",
+              text: "Cultivado a 1.900 m.s.n.m. en microclimas únicos de Huila.",
+            },
+            {
+              title: "92 puntos SCA",
+              text: "Perfil sensorial complejo, limpio y de alta puntuación en taza.",
+            },
+            {
+              title: "Proceso artesanal",
+              text: "Recolección manual y fermentaciones controladas lote a lote.",
+            },
           ].map((item, i) => (
-            <div key={i} className="bg-white p-6 rounded-2xl shadow">
-              <b>{item[0]}:</b> {item[1]}
+            <div
+              key={i}
+              className="bg-white p-8 rounded-2xl shadow-sm border border-black/5"
+            >
+              <h3 className="text-xl font-medium mb-3">{item.title}</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">{item.text}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* FINAL */}
-      <section className="bg-[#2d2a26] text-white py-20 text-center">
-        <h2 className="text-3xl font-bold mb-4">
-          Dirigido a alta gastronomía
+      {/* STORY */}
+      <section id="historia" className="bg-white py-24 px-6">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-4xl font-light mb-10">Nuestra historia</h2>
+
+          <p className="text-gray-600 leading-relaxed text-lg">
+            Finca Alto Horizonte nace en La Plata, Huila (Colombia), una región reconocida
+            por producir algunos de los cafés más complejos del país. A más de 1.900 metros
+            de altitud, combinamos tradición familiar y procesos de precisión para obtener
+            cafés de especialidad con identidad propia.
+          </p>
+        </div>
+      </section>
+
+      {/* COFFEE SPECS */}
+      <section className="max-w-6xl mx-auto py-24 px-6">
+        <h2 className="text-center text-4xl font-light mb-16">
+          Nuestro café
         </h2>
-        <p className="max-w-3xl mx-auto">
-          Café exclusivo para restaurantes, tostadores y profesionales del café de especialidad.
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            ["Origen", "La Plata, Huila"],
+            ["Altitud", "1.900 m.s.n.m."],
+            ["Variedades", "Castillo · Caturra · Geisha"],
+            ["Proceso", "Lavado con fermentación prolongada"],
+            ["Recolección", "Manual selectiva"],
+            ["Calidad", "Hasta 92 puntos SCA"],
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="bg-[#fff] p-6 rounded-xl border border-black/5"
+            >
+              <p className="text-sm text-gray-500">{item[0]}</p>
+              <p className="font-medium mt-1">{item[1]}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* GASTRONOMY */}
+      <section className="bg-[#1f1f1f] text-white py-24 px-6 text-center">
+        <h2 className="text-4xl font-light mb-6">
+          Alta gastronomía
+        </h2>
+
+        <p className="max-w-3xl mx-auto text-white/80 text-lg leading-relaxed">
+          Un café diseñado para restaurantes, tostadores y profesionales que buscan
+          un producto de origen, trazabilidad y excelencia en taza.
         </p>
       </section>
+
+      {/* FOOTER */}
+      <footer className="py-10 text-center text-sm text-gray-500">
+        Finca Alto Horizonte · Café de especialidad · Huila, Colombia
+      </footer>
 
     </div>
   );
