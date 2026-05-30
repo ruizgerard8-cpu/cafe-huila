@@ -1,8 +1,21 @@
-export default function ProductSection() {
-  return (
-    <div className='p-10 bg-white' id='producto'>
-      <h2 className='text-2xl font-bold mb-4'>Nuestro Café</h2>
-      <p>Café 100% arábica</p>
-    </div>
-  )
+{
+  "name": "finca-cafe-colombia",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "framer-motion": "^11.0.0",
+    "lucide-react": "^0.300.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "@vitejs/plugin-react": "^4.0.0"
+  }
 }
