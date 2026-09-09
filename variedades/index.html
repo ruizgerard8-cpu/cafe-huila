@@ -1,329 +1,549 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nuestro Café - Café Mi Huila</title>
-<script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Nuestro Café - Café Mi Huila</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
+
 
 <body class="bg-[#f7f3ea] text-gray-800">
 
-<header class="relative h-[70vh] flex items-center justify-center">
 
-<img
-  src="https://images.unsplash.com/photo-1509042239860-f550ce710b93"
-  class="absolute inset-0 w-full h-full object-cover"
->
+<!-- ========================================= -->
+<!-- HERO -->
+<!-- ========================================= -->
 
-<div class="absolute inset-0 bg-black/50"></div>
+<header class="relative h-[70vh] flex items-center justify-center overflow-hidden">
 
-<div class="relative text-center text-white px-6 max-w-3xl">
 
-<h1 class="text-5xl md:text-7xl font-bold mb-4">
-  Café de Especialidad
-</h1>
+  <!-- LOGO -->
+  <div class="absolute top-0 left-0 z-50 p-5 md:p-7">
 
-<p class="text-xl md:text-2xl">
-  Origen Huila · Producción de microlotes · Directo de Finca
-</p>
+    <a href="../" class="block">
 
-</div>
+      <img
+        src="../img/logo.png"
+        alt="Orígenes del Huila"
+        class="w-56 md:w-72 h-auto drop-shadow-lg"
+      >
+
+    </a>
+
+  </div>
+
+
+  <!-- IMAGEN PRINCIPAL -->
+
+  <img
+    src="https://images.unsplash.com/photo-1509042239860-f550ce710b93"
+    alt="Café de especialidad"
+    class="absolute inset-0 w-full h-full object-cover"
+  >
+
+
+  <!-- CAPA OSCURA -->
+
+  <div class="absolute inset-0 bg-black/50"></div>
+
+
+  <!-- TEXTO HERO -->
+
+  <div class="relative z-10 text-center text-white px-6 max-w-3xl">
+
+    <h1 class="text-5xl md:text-7xl font-bold mb-4">
+      Café de Especialidad
+    </h1>
+
+    <p class="text-xl md:text-2xl">
+      Origen Huila · Producción de microlotes · Directo de Finca
+    </p>
+
+  </div>
+
 </header>
 
 
+
+<!-- ========================================= -->
+<!-- INTRODUCCIÓN -->
+<!-- ========================================= -->
+
 <section class="max-w-6xl mx-auto py-16 px-6 text-center">
 
-<h2 class="text-4xl font-bold mb-6">
-  Un café diseñado para alta gastronomía
-</h2>
+  <h2 class="text-4xl font-bold mb-6">
+    Un café diseñado para alta gastronomía
+  </h2>
 
-<p class="text-lg max-w-3xl mx-auto">
-  Nuestro café nace en las montañas del Huila, Colombia.
-  Trabajamos microlotes seleccionados para ofrecer consistencia,
-  trazabilidad y un perfil sensorial complejo orientado a
-  restaurantes, hoteles y cafeterías de especialidad.
-</p>
+  <p class="text-lg max-w-3xl mx-auto">
+
+    Nuestro café nace en las montañas del Huila, Colombia.
+    Trabajamos microlotes seleccionados para ofrecer consistencia,
+    trazabilidad y un perfil sensorial complejo orientado a
+    restaurantes, hoteles y cafeterías de especialidad.
+
+  </p>
 
 </section>
 
+
+
+<!-- ========================================= -->
+<!-- INFORMACIÓN DEL CAFÉ -->
+<!-- ========================================= -->
 
 <section class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6 mb-16">
 
-<div class="bg-white p-6 rounded-xl shadow text-center">
-  <h3 class="font-bold text-xl mb-2">Origen</h3>
-  <p>La Plata, Huila – Colombia</p>
-</div>
 
-<div class="bg-white p-6 rounded-xl shadow text-center">
-  <h3 class="font-bold text-xl mb-2">Altitud</h3>
-  <p>1.700 – 2.000 msnm</p>
-</div>
+  <!-- ORIGEN -->
 
-<div class="bg-white p-6 rounded-xl shadow text-center">
-  <h3 class="font-bold text-xl mb-2">Calidad</h3>
-  <p>86/92 puntos SCA</p>
-</div>
+  <div class="bg-white p-6 rounded-xl shadow text-center">
+
+    <h3 class="font-bold text-xl mb-2">
+      Origen
+    </h3>
+
+    <p>
+      La Plata, Huila – Colombia
+    </p>
+
+  </div>
+
+
+  <!-- ALTITUD -->
+
+  <div class="bg-white p-6 rounded-xl shadow text-center">
+
+    <h3 class="font-bold text-xl mb-2">
+      Altitud
+    </h3>
+
+    <p>
+      1.700 – 2.000 msnm
+    </p>
+
+  </div>
+
+
+  <!-- CALIDAD -->
+
+  <div class="bg-white p-6 rounded-xl shadow text-center">
+
+    <h3 class="font-bold text-xl mb-2">
+      Calidad
+    </h3>
+
+    <p>
+      86/92 puntos SCA
+    </p>
+
+  </div>
 
 </section>
 
+
+
+<!-- ========================================= -->
+<!-- VARIEDADES -->
+<!-- ========================================= -->
 
 <section class="max-w-6xl mx-auto px-6 mb-16">
 
-<h2 class="text-3xl font-bold text-center mb-10">
-  Variedades
-</h2>
-
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-<div class="bg-white p-6 rounded-xl shadow">
-  <h3 class="font-bold text-xl mb-2">
-    Castilla (Castillo)
-  </h3>
-  <p>
-    Variedad desarrollada por Cenicafé. Excelente resistencia,
-    gran estabilidad productiva y una taza equilibrada.
-    <br><br>
-    <strong>Notas:</strong>
-    Chocolate, panela, caramelo y cítricos.
-  </p>
-</div>
+  <h2 class="text-3xl font-bold text-center mb-10">
+    Variedades
+  </h2>
 
 
-<div class="bg-white p-6 rounded-xl shadow">
-  <h3 class="font-bold text-xl mb-2">
-    Castilla Zona Azul
-  </h3>
-  <p>
-    Microlotes cultivados en zonas privilegiadas del Huila
-    con gran dulzor y complejidad.
-    <br><br>
-    <strong>Notas:</strong>
-    Miel, flores blancas y frutas de hueso.
-  </p>
-</div>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
 
-<div class="bg-white p-6 rounded-xl shadow">
-  <h3 class="font-bold text-xl mb-2">
-    Variedad Colombia
-  </h3>
-  <p>
-    Variedad emblemática colombiana con excelente equilibrio
-    y limpieza.
-    <br><br>
-    <strong>Notas:</strong>
-    Chocolate, caramelo y frutos secos.
-  </p>
-</div>
+    <!-- CASTILLA -->
+
+    <div class="bg-white p-6 rounded-xl shadow">
+
+      <h3 class="font-bold text-xl mb-2">
+        Castilla (Castillo)
+      </h3>
+
+      <p>
+
+        Variedad desarrollada por Cenicafé.
+        Excelente resistencia, gran estabilidad productiva
+        y una taza equilibrada.
+
+        <br><br>
+
+        <strong>Notas:</strong>
+        Chocolate, panela, caramelo y cítricos.
+
+      </p>
+
+    </div>
 
 
-<div class="bg-white p-6 rounded-xl shadow">
-  <h3 class="font-bold text-xl mb-2">
-    F6
-  </h3>
-  <p>
-    Selección genética de alto rendimiento y gran calidad sensorial.
-    <br><br>
-    <strong>Notas:</strong>
-    Cacao, panela y frutas maduras.
-  </p>
-</div>
+
+    <!-- CASTILLA ZONA AZUL -->
+
+    <div class="bg-white p-6 rounded-xl shadow">
+
+      <h3 class="font-bold text-xl mb-2">
+        Castilla Zona Azul
+      </h3>
+
+      <p>
+
+        Microlotes cultivados en zonas privilegiadas
+        del Huila con gran dulzor y complejidad.
+
+        <br><br>
+
+        <strong>Notas:</strong>
+        Miel, flores blancas y frutas de hueso.
+
+      </p>
+
+    </div>
 
 
-<div class="bg-white p-6 rounded-xl shadow">
-  <h3 class="font-bold text-xl mb-2">
-    Caturra Chiroso
-  </h3>
-  <p>
-    Una de las variedades más exclusivas de Colombia,
-    muy floral y elegante.
-    <br><br>
-    <strong>Notas:</strong>
-    Jazmín, bergamota, cítricos y frutas tropicales.
-  </p>
-</div>
+
+    <!-- COLOMBIA -->
+
+    <div class="bg-white p-6 rounded-xl shadow">
+
+      <h3 class="font-bold text-xl mb-2">
+        Variedad Colombia
+      </h3>
+
+      <p>
+
+        Variedad emblemática colombiana
+        con excelente equilibrio y limpieza.
+
+        <br><br>
+
+        <strong>Notas:</strong>
+        Chocolate, caramelo y frutos secos.
+
+      </p>
+
+    </div>
 
 
-<div class="bg-white p-6 rounded-xl shadow">
-  <h3 class="font-bold text-xl mb-2">
-    Bourbon Rosado
-  </h3>
-  <p>
-    Variedad premium muy apreciada por tostadores
-    de especialidad.
-    <br><br>
-    <strong>Notas:</strong>
-    Frutos rojos, melocotón, miel y flores blancas.
-  </p>
-</div>
 
-</div>
+    <!-- F6 -->
+
+    <div class="bg-white p-6 rounded-xl shadow">
+
+      <h3 class="font-bold text-xl mb-2">
+        F6
+      </h3>
+
+      <p>
+
+        Selección genética de alto rendimiento
+        y gran calidad sensorial.
+
+        <br><br>
+
+        <strong>Notas:</strong>
+        Cacao, panela y frutas maduras.
+
+      </p>
+
+    </div>
+
+
+
+    <!-- CATURRA CHIROSO -->
+
+    <div class="bg-white p-6 rounded-xl shadow">
+
+      <h3 class="font-bold text-xl mb-2">
+        Caturra Chiroso
+      </h3>
+
+      <p>
+
+        Una de las variedades más exclusivas de Colombia,
+        muy floral y elegante.
+
+        <br><br>
+
+        <strong>Notas:</strong>
+        Jazmín, bergamota, cítricos y frutas tropicales.
+
+      </p>
+
+    </div>
+
+
+
+    <!-- BOURBON ROSADO -->
+
+    <div class="bg-white p-6 rounded-xl shadow">
+
+      <h3 class="font-bold text-xl mb-2">
+        Bourbon Rosado
+      </h3>
+
+      <p>
+
+        Variedad premium muy apreciada
+        por tostadores de especialidad.
+
+        <br><br>
+
+        <strong>Notas:</strong>
+        Frutos rojos, melocotón, miel y flores blancas.
+
+      </p>
+
+    </div>
+
+  </div>
+
 </section>
 
+
+
+<!-- ========================================= -->
+<!-- FINCA Y CAFÉ -->
+<!-- ========================================= -->
 
 <section class="max-w-6xl mx-auto px-6 mb-20">
 
-<h2 class="text-3xl font-bold text-center mb-10">
-  La finca y el café
-</h2>
+  <h2 class="text-3xl font-bold text-center mb-10">
+    La finca y el café
+  </h2>
 
-<div class="grid md:grid-cols-3 gap-6">
 
-<div class="overflow-hidden rounded-xl shadow-lg h-64">
-  <img
+  <div class="grid md:grid-cols-3 gap-6">
+
+
+    <!-- FOTO 1 -->
+
+    <div class="overflow-hidden rounded-xl shadow-lg h-64">
+
+      <img
         src="/images/1788960608151.png"
-    class="w-full h-full object-cover hover:scale-105 transition duration-500"
-  >
-</div>
+        alt="Finca de café"
+        class="w-full h-full object-cover hover:scale-105 transition duration-500"
+      >
 
-<div class="overflow-hidden rounded-xl shadow-lg h-64">
-  <img
+    </div>
+
+
+    <!-- FOTO 2 -->
+
+    <div class="overflow-hidden rounded-xl shadow-lg h-64">
+
+      <img
         src="/images/IMG-20251011-WA0004.jpeg"
-    class="w-full h-full object-cover hover:scale-105 transition duration-500"
-  >
-</div>
+        alt="Café de la finca"
+        class="w-full h-full object-cover hover:scale-105 transition duration-500"
+      >
 
-<div class="overflow-hidden rounded-xl shadow-lg h-64">
-  <img
-    src="https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb"
-    class="w-full h-full object-cover hover:scale-105 transition duration-500"
-  >
-</div>
+    </div>
 
-</div>
+
+    <!-- FOTO 3 -->
+
+    <div class="overflow-hidden rounded-xl shadow-lg h-64">
+
+      <img
+        src="https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb"
+        alt="Granos de café"
+        class="w-full h-full object-cover hover:scale-105 transition duration-500"
+      >
+
+    </div>
+
+  </div>
+
 </section>
 
 
-<!-- ============================= -->
+
+<!-- ========================================= -->
 <!-- FORMULARIO DE CONTACTO -->
-<!-- ============================= -->
+<!-- ========================================= -->
 
 <section
   id="contacto"
   class="bg-white py-16 px-6"
 >
 
-<div class="max-w-4xl mx-auto">
-
-<h2 class="text-3xl font-bold text-center mb-4">
-  Solicita información
-</h2>
-
-<p class="text-center text-gray-600 mb-8">
-  Solicita precios, muestras o información comercial.
-</p>
+  <div class="max-w-4xl mx-auto">
 
 
-<form
-  action="https://formsubmit.co/origeneshuila@gmail.com"
-  method="POST"
-  class="space-y-6"
->
-
-<input
-  type="hidden"
-  name="_captcha"
-  value="false"
->
-
-<input
-  type="hidden"
-  name="_subject"
-  value="Nueva consulta desde Café Mi Huila"
->
-
-<input
-  type="hidden"
-  name="_template"
-  value="table"
->
+    <h2 class="text-3xl font-bold text-center mb-4">
+      Solicita información
+    </h2>
 
 
-<input
-  class="w-full border rounded-lg p-3"
-  type="text"
-  name="nombre"
-  placeholder="Nombre"
-  required
->
+    <p class="text-center text-gray-600 mb-8">
+
+      Solicita precios, muestras o información comercial.
+
+    </p>
 
 
-<input
-  class="w-full border rounded-lg p-3"
-  type="email"
-  name="email"
-  placeholder="Correo electrónico"
-  required
->
+
+    <form
+      action="https://formsubmit.co/origeneshuila@gmail.com"
+      method="POST"
+      class="space-y-6"
+    >
 
 
-<input
-  class="w-full border rounded-lg p-3"
-  type="text"
-  name="empresa"
-  placeholder="Empresa"
->
+      <!-- CONFIGURACIÓN FORMULARIO -->
+
+      <input
+        type="hidden"
+        name="_captcha"
+        value="false"
+      >
 
 
-<textarea
-  class="w-full border rounded-lg p-3"
-  rows="6"
-  name="mensaje"
-  placeholder="Escriba su consulta..."
-  required
-></textarea>
+      <input
+        type="hidden"
+        name="_subject"
+        value="Nueva consulta desde Café Mi Huila"
+      >
 
 
-<div class="text-center">
+      <input
+        type="hidden"
+        name="_template"
+        value="table"
+      >
 
-<button
-  type="submit"
-  class="bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition"
->
-  Enviar consulta
-</button>
 
-</div>
 
-</form>
+      <!-- NOMBRE -->
 
-</div>
+      <input
+        class="w-full border rounded-lg p-3"
+        type="text"
+        name="nombre"
+        placeholder="Nombre"
+        required
+      >
+
+
+      <!-- EMAIL -->
+
+      <input
+        class="w-full border rounded-lg p-3"
+        type="email"
+        name="email"
+        placeholder="Correo electrónico"
+        required
+      >
+
+
+      <!-- EMPRESA -->
+
+      <input
+        class="w-full border rounded-lg p-3"
+        type="text"
+        name="empresa"
+        placeholder="Empresa"
+      >
+
+
+      <!-- MENSAJE -->
+
+      <textarea
+        class="w-full border rounded-lg p-3"
+        rows="6"
+        name="mensaje"
+        placeholder="Escriba su consulta..."
+        required
+      ></textarea>
+
+
+
+      <!-- BOTÓN -->
+
+      <div class="text-center">
+
+        <button
+          type="submit"
+          class="bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition"
+        >
+          Enviar consulta
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
 </section>
 
 
-<!-- ============================= -->
+
+<!-- ========================================= -->
 <!-- PERFIL SENSORIAL -->
-<!-- ============================= -->
+<!-- ========================================= -->
 
 <section class="bg-white py-16 px-6 text-center">
 
-<h2 class="text-3xl font-bold mb-6">
-  Perfil sensorial
-</h2>
+  <h2 class="text-3xl font-bold mb-6">
+    Perfil sensorial
+  </h2>
 
-<p class="max-w-2xl mx-auto text-lg">
-  Chocolate negro · Caramelo · Frutos rojos ·
-  Cítricos suaves · Panela
-</p>
+
+  <p class="max-w-2xl mx-auto text-lg">
+
+    Chocolate negro · Caramelo · Frutos rojos ·
+    Cítricos suaves · Panela
+
+  </p>
 
 </section>
 
 
-<!-- ============================= -->
+
+<!-- ========================================= -->
 <!-- VOLVER AL INICIO -->
-<!-- ============================= -->
+<!-- ========================================= -->
 
 <section class="text-center py-16">
 
-<a href="../"
-  class="bg-black text-white px-8 py-4 rounded-lg"
->
-  Volver al inicio
-</a>
+  <a
+    href="../"
+    class="bg-black text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition"
+  >
+    Volver al inicio
+  </a>
 
 </section>
+
+
+
+<!-- ========================================= -->
+<!-- FOOTER -->
+<!-- ========================================= -->
+
+<footer class="bg-[#211f1c] text-white text-center py-6">
+
+  <p class="text-sm">
+    © 2026 Orígenes del Huila. Todos los derechos reservados.
+  </p>
+
+</footer>
 
 
 </body>
 </html>
+```
