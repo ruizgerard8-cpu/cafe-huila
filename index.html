@@ -1,144 +1,296 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Origenes del Huila</title>
 
+  <title>Orígenes del Huila</title>
+
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-   <style>
-.bg-black\/20 {
-    background-color: transparent !important;
-}
-</style>
+  <style>
+    /* Elimina cualquier fondo negro semitransparente */
+    .bg-black\/20 {
+      background-color: transparent !important;
+    }
+  </style>
 </head>
-<header class="header">
-  <a href="/" class="logo">
-    <img src="img/logo.png" alt="Logo de mi web">
-  </a>
-</header>
+
 <body class="bg-[#f7f3ea] text-gray-800">
 
-<!-- HERO -->
-  
-<section class="relative w-full bg-[#f7f3ea]">
+  <!-- ========================================= -->
+  <!-- HEADER / LOGO -->
+  <!-- ========================================= -->
 
-  <img
-    src="https://raw.githubusercontent.com/ruizgerard8-cpu/cafe-huila/main/images/portada.jpg"
-    alt="Café de origen del Huila"
-    class="block w-full h-auto"
-  >
+  <header class="absolute top-0 left-0 z-50 p-5 md:p-7">
 
- 
+    <a href="/" class="block">
 
-</section>
-  
+      <img
+        src="img/logo.png"
+        alt="Orígenes del Huila"
+        class="w-28 md:w-36 h-auto drop-shadow-lg"
+      >
+
+    </a>
+
+  </header>
 
 
+  <!-- ========================================= -->
+  <!-- HERO / PORTADA -->
+  <!-- ========================================= -->
 
-  <!-- ABOUT -->
-  <section class="max-w-6xl mx-auto py-16 px-6 grid md:grid-cols-3 gap-8">
+  <section class="relative w-full bg-[#f7f3ea]">
 
-    <!-- Card 1 -->
-    <div class="bg-white rounded-xl shadow p-6 text-center">
-      <div class="text-green-600 text-4xl mb-4">🌿</div>
-      <h2 class="text-xl font-semibold mb-2">Cultivo sostenible</h2>
-      <p>
-        Nuestro café se cultiva respetando la tierra y la biodiversidad de Colombia.
-      </p>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="bg-white rounded-xl shadow p-6 text-center">
-      <div class="text-brown-600 text-4xl mb-4">☕</div>
-      <h2 class="text-xl font-semibold mb-2">Café de especialidad</h2>
-      <p>
-        Granos seleccionados a mano para ofrecer un sabor único y auténtico.
-      </p>
-    </div>
-<!-- Card 3 -->
-<div class="bg-white rounded-xl shadow p-6 text-center">
-
-  <div class="flex justify-center mb-4">
-    <svg
-      width="64"
-      height="48"
-      viewBox="0 0 6 4"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-label="Bandera de Colombia"
-      role="img"
-      class="rounded shadow-sm"
+    <img
+      src="https://raw.githubusercontent.com/ruizgerard8-cpu/cafe-huila/main/images/portada.jpg"
+      alt="Café de origen del Huila"
+      class="block w-full h-auto"
     >
-      <rect width="6" height="4" fill="#FCD116"/>
-      <rect y="2" width="6" height="1" fill="#003893"/>
-      <rect y="3" width="6" height="1" fill="#CE1126"/>
-    </svg>
-  </div>
 
-  <h2 class="text-xl font-semibold mb-2">
-    Origen colombiano
-  </h2>
-
-  <p>
-    Cultivado en nuestra finca familiar en las montañas de Colombia.
-  </p>
-
-</div>
   </section>
 
+
+  <!-- ========================================= -->
+  <!-- SOBRE NOSOTROS / CARACTERÍSTICAS -->
+  <!-- ========================================= -->
+
+  <section class="max-w-6xl mx-auto py-16 px-6">
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+
+      <!-- CARD 1 -->
+      <div class="bg-white rounded-xl shadow p-6 text-center">
+
+        <div class="text-green-600 text-4xl mb-4">
+          🌿
+        </div>
+
+        <h2 class="text-xl font-semibold mb-2">
+          Cultivo sostenible
+        </h2>
+
+        <p>
+          Nuestro café se cultiva respetando la tierra
+          y la biodiversidad de Colombia.
+        </p>
+
+      </div>
+
+
+      <!-- CARD 2 -->
+      <div class="bg-white rounded-xl shadow p-6 text-center">
+
+        <div class="text-brown-600 text-4xl mb-4">
+          ☕
+        </div>
+
+        <h2 class="text-xl font-semibold mb-2">
+          Café de especialidad
+        </h2>
+
+        <p>
+          Granos seleccionados a mano para ofrecer
+          un sabor único y auténtico.
+        </p>
+
+      </div>
+
+
+      <!-- CARD 3 -->
+      <div class="bg-white rounded-xl shadow p-6 text-center">
+
+        <div class="flex justify-center mb-4">
+
+          <svg
+            width="64"
+            height="48"
+            viewBox="0 0 6 4"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-label="Bandera de Colombia"
+            role="img"
+            class="rounded shadow-sm"
+          >
+
+            <!-- Amarillo -->
+            <rect
+              width="6"
+              height="4"
+              fill="#FCD116"
+            />
+
+            <!-- Azul -->
+            <rect
+              y="2"
+              width="6"
+              height="1"
+              fill="#003893"
+            />
+
+            <!-- Rojo -->
+            <rect
+              y="3"
+              width="6"
+              height="1"
+              fill="#CE1126"
+            />
+
+          </svg>
+
+        </div>
+
+
+        <h2 class="text-xl font-semibold mb-2">
+          Origen colombiano
+        </h2>
+
+        <p>
+          Cultivado en nuestra finca familiar
+          en las montañas de Colombia.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================= -->
   <!-- PRODUCTO -->
+  <!-- ========================================= -->
+
   <section class="bg-white py-16 px-6">
+
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-4">Nuestro Café</h2>
+
+
+      <h2 class="text-3xl font-bold mb-4">
+        Nuestro Café
+      </h2>
+
+
       <p class="mb-8">
-        Café 100% arábica, tostado artesanalmente para preservar sus aromas naturales.
+        Café 100% arábica, tostado artesanalmente
+        para preservar sus aromas naturales.
       </p>
+
 
       <div class="grid md:grid-cols-2 gap-8">
 
-        <!-- Producto 1 -->
+
+        <!-- ================================= -->
+        <!-- PRODUCTO 1 -->
+        <!-- ================================= -->
+
         <div class="bg-[#f7f3ea] rounded-xl shadow p-6">
-          <h3 class="text-xl font-semibold mb-2">Café en grano verde</h3>
-          <p class="mb-4">Ideal para moler en casa y disfrutar fresco.</p>
-          </br>
-      
-              <a
-  href="variedades/"
-  class="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition"
->
-  Ver Variedades
-</a>
-        
+
+          <h3 class="text-xl font-semibold mb-2">
+            Café en grano verde
+          </h3>
+
+
+          <p class="mb-6">
+            Ideal para moler en casa y disfrutar fresco.
+          </p>
+
+
+          <a
+            href="variedades/"
+            class="inline-block bg-black text-white px-5 py-3 rounded-lg hover:bg-gray-800 transition"
+          >
+            Ver Variedades
+          </a>
+
         </div>
 
-        <!-- Producto 2 -->
+
+        <!-- ================================= -->
+        <!-- PRODUCTO 2 -->
+        <!-- ================================= -->
+
         <div class="bg-[#f7f3ea] rounded-xl shadow p-6">
-          <h3 class="text-xl font-semibold mb-2">Café molido</h3>
-          <h3 class="text-xl font-semibold mb-2">Próximamente</h3>
-          <p class="mb-4">Perfecto para preparación rápida y aromática.</p>
-          <button class="hidden bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition">
+
+          <h3 class="text-xl font-semibold mb-2">
+            Café molido
+          </h3>
+
+
+          <h3 class="text-xl font-semibold mb-2">
+            Próximamente
+          </h3>
+
+
+          <p class="mb-6">
+            Perfecto para preparación rápida y aromática.
+          </p>
+
+
+          <!-- Botón oculto hasta que el producto esté disponible -->
+
+          <button
+            class="hidden bg-black text-white px-5 py-3 rounded-lg hover:bg-gray-800 transition"
+          >
             🛒 Comprar
           </button>
+
         </div>
 
       </div>
+
     </div>
+
   </section>
 
+
+  <!-- ========================================= -->
   <!-- CONTACTO -->
-  <section class="bg-[#2d2a26] text-white py-16 px-6 text-center">
-    <h2 class="text-3xl font-bold mb-4">Contacto</h2>
+  <!-- ========================================= -->
+
+  <section
+    id="contacto"
+    class="bg-[#2d2a26] text-white py-16 px-6 text-center"
+  >
+
+    <h2 class="text-3xl font-bold mb-4">
+      Contacto
+    </h2>
+
+
     <p class="mb-6">
-      Escríbenos para pedidos, visitas a la finca o colaboración.
+      Escríbenos para pedidos, visitas a la finca
+      o colaboración.
     </p>
+
+
     <a
-       href="variedades/#contacto"
-  class="bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition inline-block"
->
-  Contactar ahora
-</a>
+      href="variedades/#contacto"
+      class="inline-block bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition"
+    >
+      Contactar ahora
+    </a>
+
   </section>
+
+
+  <!-- ========================================= -->
+  <!-- FOOTER -->
+  <!-- ========================================= -->
+
+  <footer class="bg-[#211f1c] text-white text-center py-6">
+
+    <p class="text-sm">
+      © 2026 Orígenes del Huila. Todos los derechos reservados.
+    </p>
+
+  </footer>
+
 
 </body>
 </html>
+```
