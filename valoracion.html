@@ -1,36 +1,510 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Valoración inmobiliaria gratuita</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valoración de tu inmueble</title>
 <style>
-:root{font-family:Arial,Helvetica,sans-serif;color:#202936;background:#f3f5f8}*{box-sizing:border-box}body{margin:0;padding:24px}.wrap{max-width:820px;margin:auto;background:white;border-radius:16px;padding:28px;box-shadow:0 8px 28px #18223012}h1{margin-top:0;font-size:28px}p{line-height:1.5;color:#4b5563}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}label{display:block;font-weight:700;font-size:14px;margin-bottom:6px}input,select{width:100%;padding:12px;border:1px solid #cbd2dc;border-radius:8px;font-size:16px;background:#fff}button{border:0;border-radius:9px;padding:13px 18px;background:#155eef;color:white;font-weight:700;font-size:16px;cursor:pointer;margin-top:18px}button:disabled{opacity:.55;cursor:wait}.hint{font-size:13px;color:#667085}.result{display:none;margin-top:24px;padding:20px;border:1px solid #d6e4ff;border-radius:12px;background:#f8fbff}.price{font-size:32px;font-weight:800;margin:8px 0}.notice{font-size:13px;color:#596579}.error{color:#b42318;margin-top:14px}.result a{color:#155eef}.source{margin-top:18px;font-size:13px}.full{grid-column:1/-1}@media(max-width:600px){body{padding:12px}.wrap{padding:18px}.grid{grid-template-columns:1fr}h1{font-size:23px}}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;color:#222;background:#f5f6f7}
+.contenedor{width:92%;max-width:850px;margin:35px auto;padding:28px;background:white;border-radius:12px;box-shadow:0 3px 18px #00000012}
+h1{margin-top:0;font-size:28px}h2{margin-top:0;font-size:22px}
+p{line-height:1.5}
+label{display:block;margin:15px 0 6px;font-weight:bold}
+input,select,textarea{width:100%;padding:12px;border:1px solid #ccc;border-radius:6px;font-size:16px;background:white}
+input[type=checkbox]{width:auto;margin-right:8px}
+button{padding:13px 20px;margin-top:20px;border:0;border-radius:6px;background:#173f35;color:white;font-size:16px;cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}
+button.secundario{background:#555;margin-left:8px}
+.pasos{display:flex;gap:8px;margin:22px 0}
+.paso-indicador{flex:1;padding:9px 5px;text-align:center;background:#e9eceb;border-radius:5px;font-size:13px}
+.paso-indicador.activo{background:#173f35;color:white}
+.seccion{display:none}.seccion.activa{display:block}
+.fila,.opciones{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.opciones{gap:10px;margin-top:10px}
+.opcion{display:flex;align-items:center;padding:10px;border:1px solid #ddd;border-radius:6px;font-weight:normal;margin:0}
+.opcion input{width:auto;margin:0 8px 0 0}
+.aviso{padding:12px;border-radius:6px;background:#f0f3f2;margin-top:14px;line-height:1.5}
+.estado{margin-top:12px;font-size:14px;line-height:1.5}
+.mapa{width:100%;height:320px;border:0;border-radius:8px;margin-top:15px}
+.resumen{background:#f5f6f7;padding:16px;border-radius:8px;overflow-wrap:anywhere}
+.resumen p{margin:8px 0}.nota{color:#555;font-size:13px}
+.valoracion{background:#f0f5f2;border:1px solid #cbd9d1;border-radius:10px;padding:20px;margin:18px 0}
+.precio{font-size:32px;font-weight:bold;color:#173f35;margin:8px 0}
+.subtitulo{font-size:14px;color:#4b5563}
+@media(max-width:600px){
+ .contenedor{padding:18px;margin:15px auto}
+ .fila,.opciones{grid-template-columns:1fr}
+ .mapa{height:260px}h1{font-size:24px}.precio{font-size:27px}
+}
 </style>
 </head>
-<body><main class="wrap">
-<h1>Valoración inmobiliaria gratuita</h1>
-<p>Introduce los datos de la vivienda y calcula una estimación automática usando los datos estadísticos públicos del Ministerio de Vivienda. No utiliza anuncios privados ni inventa comparables.</p>
-<form id="form">
-<div class="grid">
-<div><label for="tipo">Tipo de inmueble</label><select id="tipo"><option value="piso">Piso</option><option value="casa">Casa</option></select></div>
-<div><label for="provincia">Provincia</label><select id="provincia" required><option value="">Selecciona provincia</option><option>Álava</option><option>Albacete</option><option>Alicante</option><option>Almería</option><option>Asturias</option><option>Ávila</option><option>Badajoz</option><option>Barcelona</option><option>Burgos</option><option>Cáceres</option><option>Cádiz</option><option>Cantabria</option><option>Castellón</option><option>Ceuta</option><option>Ciudad Real</option><option>Córdoba</option><option>Cuenca</option><option>Girona</option><option>Granada</option><option>Guadalajara</option><option>Guipúzcoa</option><option>Huelva</option><option>Huesca</option><option>Illes Balears</option><option>Jaén</option><option>La Coruña</option><option>La Rioja</option><option>Las Palmas</option><option>León</option><option>Lleida</option><option>Lugo</option><option>Madrid</option><option>Málaga</option><option>Melilla</option><option>Murcia</option><option>Navarra</option><option>Ourense</option><option>Palencia</option><option>Pontevedra</option><option>Salamanca</option><option>Santa Cruz de Tenerife</option><option>Segovia</option><option>Sevilla</option><option>Soria</option><option>Tarragona</option><option>Teruel</option><option>Toledo</option><option>Valencia</option><option>Valladolid</option><option>Vizcaya</option><option>Zamora</option><option>Zaragoza</option></select></div>
-<div class="full"><label for="direccion">Dirección (opcional)</label><input id="direccion" placeholder="Calle, número, municipio"></div>
-<div class="full"><label for="catastro">Referencia catastral (opcional)</label><input id="catastro" placeholder="Referencia catastral"></div>
-<div><label for="metros">Superficie construida (m²)</label><input id="metros" type="number" min="1" max="100000" required placeholder="Ej. 80"></div>
-<div><label for="estado">Estado de conservación</label><select id="estado"><option value="1">Bueno</option><option value="0.85">Necesita reforma</option><option value="1.1">Reformado</option></select></div>
-<div><label for="habitaciones">Habitaciones (opcional)</label><input id="habitaciones" type="number" min="0" max="30" placeholder="Ej. 3"></div>
-<div><label for="banyos">Baños (opcional)</label><input id="banyos" type="number" min="0" max="20" placeholder="Ej. 1"></div>
-</div><button id="btn" type="submit">Calcular valoración</button>
-<div id="error" class="error" role="alert"></div>
-</form>
-<section id="resultado" class="result" aria-live="polite"><div>Estimación orientativa</div><div id="precio" class="price"></div><div id="detalle"></div><p id="metodo" class="notice"></p><p id="advertencia" class="notice"></p><div class="source">Fuente oficial: <a href="https://datos.gob.es/es/catalogo/e05233601-valor-tasado-de-la-vivienda" target="_blank" rel="noopener">Ministerio de Vivienda y Agenda Urbana — valor tasado medio por provincia</a>.</div></section>
-<p class="hint">La referencia catastral identifica el inmueble, pero no revela por sí sola el precio de mercado. Esta versión utiliza un promedio provincial oficial: no equivale a una tasación profesional ni a una comparación de anuncios del mismo barrio.</p>
-</main>
+<body>
+<div class="contenedor">
+<h1>Valora tu inmueble</h1>
+<p>Introduce los datos de tu propiedad para obtener una estimación orientativa de su valor.</p>
+
+<div class="pasos">
+<div class="paso-indicador activo" id="indicador1">1. Inmueble</div>
+<div class="paso-indicador" id="indicador2">2. Características</div>
+<div class="paso-indicador" id="indicador3">3. Valoración</div>
+</div>
+
+<!-- PASO 1 -->
+<section class="seccion activa" id="paso1">
+<h2>Localiza tu propiedad</h2>
+<label for="metodo">¿Cómo quieres localizarla?</label>
+<select id="metodo">
+<option value="referencia">Referencia catastral</option>
+<option value="direccion">Introducir dirección manualmente</option>
+</select>
+
+<div id="bloqueReferencia">
+<label for="referencia">Referencia catastral</label>
+<input id="referencia" placeholder="Introduce la referencia catastral">
+<button type="button" id="buscarCatastro">Buscar en Catastro</button>
+<p class="nota">Introduce la referencia catastral del inmueble.</p>
+</div>
+
+<div id="bloqueDireccion" style="display:none">
+<label for="calle">Calle y número</label>
+<input id="calle" placeholder="Ej. Calle Mayor, 10">
+<div class="fila">
+<div><label for="codigoPostal">Código postal</label><input id="codigoPostal" inputmode="numeric"></div>
+<div><label for="municipio">Municipio</label><input id="municipio" placeholder="Municipio"></div>
+</div>
+<label for="provincia">Provincia</label>
+<input id="provincia" placeholder="Se detectará automáticamente" readonly>
+<button type="button" id="buscarDireccion">Buscar dirección</button>
+</div>
+
+<div id="estadoBusqueda" class="estado" aria-live="polite"></div>
+<div id="resultadoLocalizacion" style="display:none">
+<div class="aviso">
+<strong>Comprueba la ubicación</strong>
+<p id="direccionEncontrada"></p>
+<p class="nota">Comprueba que el mapa corresponde a tu inmueble.</p>
+</div>
+<iframe id="mapa" class="mapa" title="Ubicación del inmueble" loading="lazy"></iframe>
+<label class="opcion" style="margin-top:15px">
+<input type="checkbox" id="confirmarUbicacion">
+Confirmo que la ubicación corresponde a mi inmueble.
+</label>
+<button type="button" id="continuarPaso2" disabled>Continuar</button>
+</div>
+</section>
+
+<!-- PASO 2 -->
+<section class="seccion" id="paso2">
+<h2>Características del inmueble</h2>
+<div class="aviso" id="avisoCatastro">Revisa los datos y completa los campos que falten.</div>
+
+<label for="tipoInmueble">Tipo de inmueble</label>
+<select id="tipoInmueble">
+<option value="">Selecciona una opción</option>
+<option>Piso</option><option>Apartamento</option><option>Casa o chalet</option>
+<option>Casa adosada</option><option>Ático</option><option>Dúplex</option>
+<option>Estudio</option><option>Terreno o parcela</option>
+<option>Local comercial</option><option>Oficina</option><option>Otro</option>
+</select>
+
+<div class="fila">
+<div><label for="superficie">Superficie construida (m²)</label><input id="superficie" type="number" min="1" step="0.01"></div>
+<div><label for="superficieUtil">Superficie útil (m²)</label><input id="superficieUtil" type="number" min="0" step="0.01"></div>
+</div>
+<div class="fila">
+<div><label for="habitaciones">Habitaciones</label><input id="habitaciones" type="number" min="0"></div>
+<div><label for="banos">Baños</label><input id="banos" type="number" min="0"></div>
+</div>
+<div class="fila">
+<div><label for="anoConstruccion">Año de construcción</label><input id="anoConstruccion" type="number" min="1700"></div>
+<div>
+<label for="planta">Planta</label>
+<select id="planta">
+<option value="">No indicada</option><option value="Bajo">Bajo</option>
+<option value="Entresuelo">Entresuelo</option><option value="1">1.ª planta</option>
+<option value="2">2.ª planta</option><option value="3">3.ª planta</option>
+<option value="4">4.ª planta</option><option value="5 o superior">5.ª o superior</option>
+<option value="Ático">Ático</option>
+</select>
+</div>
+</div>
+
+<label for="estadoVivienda">Estado de conservación</label>
+<select id="estadoVivienda">
+<option value="">Selecciona una opción</option>
+<option>A reformar</option><option>Regular</option><option>Buen estado</option>
+<option>Reformado</option><option>Obra nueva</option>
+</select>
+
+<label for="orientacion">Orientación</label>
+<select id="orientacion">
+<option value="">No indicada</option><option>Norte</option><option>Sur</option>
+<option>Este</option><option>Oeste</option><option>Noreste</option>
+<option>Noroeste</option><option>Sureste</option><option>Suroeste</option>
+</select>
+
+<label>Características adicionales</label>
+<div class="opciones" id="extras">
+<label class="opcion"><input type="checkbox" value="Ascensor">Ascensor</label>
+<label class="opcion"><input type="checkbox" value="Balcón">Balcón</label>
+<label class="opcion"><input type="checkbox" value="Terraza">Terraza</label>
+<label class="opcion"><input type="checkbox" value="Garaje">Garaje</label>
+<label class="opcion"><input type="checkbox" value="Trastero">Trastero</label>
+<label class="opcion"><input type="checkbox" value="Piscina comunitaria">Piscina comunitaria</label>
+<label class="opcion"><input type="checkbox" value="Piscina privada">Piscina privada</label>
+<label class="opcion"><input type="checkbox" value="Jardín">Jardín</label>
+<label class="opcion"><input type="checkbox" value="Vistas al mar">Vistas al mar</label>
+<label class="opcion"><input type="checkbox" value="Aire acondicionado">Aire acondicionado</label>
+<label class="opcion"><input type="checkbox" value="Calefacción">Calefacción</label>
+<label class="opcion"><input type="checkbox" value="Exterior">Exterior</label>
+</div>
+
+<label for="observaciones">Observaciones (opcional)</label>
+<textarea id="observaciones" rows="3" placeholder="Otros detalles de la propiedad"></textarea>
+<p class="nota">Comprueba las superficies y completa las características que falten.</p>
+<button type="button" id="volverPaso1" class="secundario">Volver</button>
+<button type="button" id="continuarPaso3">Calcular valoración</button>
+<p id="errorPaso2" class="estado" aria-live="polite"></p>
+</section>
+
+<!-- PASO 3: VALORACIÓN -->
+<section class="seccion" id="paso3">
+<h2>Valoración orientativa</h2>
+<div class="valoracion">
+<div class="subtitulo">Precio estimado de venta</div>
+<div class="precio" id="precioEstimado">—</div>
+<div id="rangoEstimado"></div>
+<p id="explicacionValoracion"></p>
+</div>
+<div class="aviso">
+<strong>Importante:</strong> esta cifra es una estimación automática basada en precios de ejemplo. No es una tasación oficial ni un precio de mercado verificado.
+</div>
+<h3>Datos del inmueble</h3>
+<div class="resumen" id="resumen"></div>
+<button type="button" id="volverPaso2" class="secundario">Modificar datos</button>
+<button type="button" id="copiarResumen">Copiar valoración</button>
+<p id="estadoCopia" class="estado" aria-live="polite"></p>
+</section>
+</div>
+
 <script>
-const CSV_URL='https://cdn.mivau.gob.es/portal-web-mivau/Datos_MIVAU/CSV/VDP006_01.csv';
-const norm=s=>String(s??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
-function parseCSV(text){const first=text.split(/\r?\n/,1)[0];const delim=(first.match(/;/g)||[]).length>(first.match(/,/g)||[]).length?';':',';const lines=text.replace(/^\uFEFF/,'').split(/\r?\n/).filter(x=>x.trim());return lines.map(line=>{let a=[],v='',q=false;for(let i=0;i<line.length;i++){let c=line[i];if(c==='"'&&q&&line[i+1]==='"'){v+='"';i++}else if(c==='"'){q=!q}else if(c===delim&&!q){a.push(v.trim());v=''}else v+=c}a.push(v.trim());return a})}
-function findCol(headers, terms){return headers.findIndex(h=>terms.some(t=>norm(h).includes(t)))}
-function fmt(n){return new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n)}
-document.getElementById('form').addEventListener('submit',async e=>{e.preventDefault();const btn=document.getElementById('btn'),err=document.getElementById('error'),box=document.getElementById('resultado');err.textContent='';box.style.display='none';const m2=Number(document.getElementById('metros').value),prov=document.getElementById('provincia').value;if(!m2||m2<=0||!prov){err.textContent='Introduce una superficie válida y selecciona la provincia.';return}btn.disabled=true;btn.textContent='Consultando datos oficiales…';try{const response=await fetch(CSV_URL,{cache:'no-store'});if(!response.ok)throw new Error('No se pudo descargar el CSV oficial.');const raw=await response.text();const rows=parseCSV(raw);if(rows.length<2)throw new Error('La fuente oficial no ha devuelto datos.');const headers=rows[0];const iy=findCol(headers,['ano','año']),iq=findCol(headers,['trimestre']),iv=findCol(headers,['valor']),ir=findCol(headers,['regimen','régimen']),ip=findCol(headers,['provincia']);if([iy,iq,iv,ir,ip].some(i=>i<0))throw new Error('El formato del archivo oficial ha cambiado y no se puede interpretar.');const matches=rows.slice(1).filter(r=>norm(r[ip])===norm(prov)&&norm(r[ir]).includes('libre')&&Number(String(r[iv]).replace(',','.'))>0);if(!matches.length)throw new Error('No se encontraron datos oficiales para esa provincia. Prueba otra provincia o consulta la fuente oficial.');matches.sort((a,b)=>(Number(b[iy])*10+Number(b[iq]))-(Number(a[iy])*10+Number(a[iq])));const latestYear=matches[0][iy],latestQ=matches[0][iq];const newest=matches.filter(r=>r[iy]===latestYear&&r[iq]===latestQ);const values=newest.map(r=>Number(String(r[iv]).replace(/\./g,'').replace(',','.'))).filter(n=>Number.isFinite(n)&&n>0);if(!values.length)throw new Error('Los datos encontrados no incluyen un valor válido.');const base=values.reduce((a,b)=>a+b,0)/values.length;const factor=Number(document.getElementById('estado').value);const est=base*m2*factor;document.getElementById('precio').textContent=fmt(est);document.getElementById('detalle').textContent=fmt(base)+' por m² de promedio estadístico provincial; superficie: '+m2+' m².';document.getElementById('metodo').textContent='Dato oficial más reciente encontrado: '+latestYear+' · trimestre '+latestQ+'. Estimación calculada multiplicando el valor medio provincial por la superficie y aplicando un ajuste orientativo por estado de conservación.';document.getElementById('advertencia').textContent='Este valor es solo una referencia estadística. No es un precio de anuncio, no se ajusta al barrio, planta, ascensor, vistas ni características específicas y el ajuste por estado es orientativo.';box.style.display='block';}catch(ex){err.textContent='No se pudo completar la consulta automática: '+ex.message+' Si has abierto el archivo directamente en tu ordenador, el navegador puede bloquear la conexión por seguridad. Prueba desde una web con HTTPS. También puedes abrir la fuente oficial para consultar los datos.';}finally{btn.disabled=false;btn.textContent='Calcular valoración';}});
-</script></body></html>
+"use strict";
+const $ = id => document.getElementById(id);
+let datosCatastro = {};
+let direccionConfirmada = "";
+let referenciaConfirmada = "";
+let datosInmueble = {};
+
+$("metodo").addEventListener("change", function(){
+  const ref = this.value === "referencia";
+  $("bloqueReferencia").style.display = ref ? "block" : "none";
+  $("bloqueDireccion").style.display = ref ? "none" : "block";
+  $("resultadoLocalizacion").style.display = "none";
+  $("estadoBusqueda").textContent = "";
+});
+
+function mostrarPaso(n){
+  for(let i=1;i<=3;i++){
+    $("paso"+i).classList.toggle("activa",i===n);
+    $("indicador"+i).classList.toggle("activo",i===n);
+  }
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function mostrarLocalizacion(direccion, referencia, origen){
+  direccionConfirmada = direccion;
+  referenciaConfirmada = referencia || "";
+  $("direccionEncontrada").textContent = direccion;
+  $("mapa").src = "https://www.google.com/maps?q=" +
+    encodeURIComponent(direccion) + "&output=embed";
+  $("resultadoLocalizacion").style.display = "block";
+  $("confirmarUbicacion").checked = false;
+  $("continuarPaso2").disabled = true;
+}
+
+$("confirmarUbicacion").addEventListener("change",function(){
+  $("continuarPaso2").disabled = !this.checked;
+});
+
+$("buscarDireccion").addEventListener("click",async function(){
+  const calle=$("calle").value.trim();
+  const cp=$("codigoPostal").value.trim();
+  const municipio=$("municipio").value.trim();
+
+  if(!calle || !municipio){
+    $("estadoBusqueda").textContent="Introduce la calle y el municipio.";
+    return;
+  }
+
+  this.disabled=true;
+  $("estadoBusqueda").textContent="Buscando dirección…";
+
+  try{
+    const q=[calle,cp,municipio,"España"].filter(Boolean).join(", ");
+    const url="https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&addressdetails=1&q="+encodeURIComponent(q);
+    const respuesta=await fetch(url,{headers:{"Accept-Language":"es"}});
+    if(!respuesta.ok) throw new Error("No se ha podido consultar el servicio de mapas.");
+
+    const resultados=await respuesta.json();
+    if(!resultados.length) throw new Error("No se ha encontrado la dirección.");
+
+    const lugar=resultados[0];
+    const a=lugar.address||{};
+    $("provincia").value=a.province||a.state_district||a.state||"";
+    mostrarLocalizacion(lugar.display_name||q,"","manual");
+    $("estadoBusqueda").textContent="Dirección localizada. Comprueba el mapa.";
+  }catch(e){
+    $("estadoBusqueda").textContent=e.message+" Puedes probar otra dirección.";
+  }finally{
+    this.disabled=false;
+  }
+});
+
+/*
+La consulta directa del Catastro puede ser bloqueada por CORS.
+Si falla, el usuario puede buscar la dirección manualmente.
+*/
+$("buscarCatastro").addEventListener("click",async function(){
+  const ref=$("referencia").value.trim().replace(/\s/g,"");
+  if(![14,18,20].includes(ref.length)){
+    $("estadoBusqueda").textContent="Comprueba la referencia catastral: debe tener 14, 18 o 20 caracteres.";
+    return;
+  }
+
+  this.disabled=true;
+  $("estadoBusqueda").textContent="Consultando Catastro…";
+
+  try{
+    const url="https://ovc.catastro.meh.es/OVCServWeb/OVCSWLocalizacionRC/OVCCallejero.asmx/Consulta_DNPRC?Provincia=&Municipio=&RC="+encodeURIComponent(ref);
+    const respuesta=await fetch(url);
+    if(!respuesta.ok) throw new Error("El servicio de Catastro no ha respondido.");
+
+    const texto=await respuesta.text();
+    const xml=new DOMParser().parseFromString(texto,"text/xml");
+    const errorXML=xml.querySelector("err");
+    if(errorXML && errorXML.textContent.trim()) throw new Error(errorXML.textContent.trim());
+
+    const elementos=Array.from(xml.getElementsByTagName("*"));
+    const buscar=nombre=>{
+      const e=elementos.find(x=>x.localName.toLowerCase()===nombre.toLowerCase());
+      return e ? e.textContent.trim() : "";
+    };
+
+    const direccion=buscar("ldt");
+    if(!direccion) throw new Error("No se ha encontrado la dirección del inmueble.");
+
+    datosCatastro={
+      referencia:ref,
+      superficie:buscar("sfc"),
+      uso:buscar("luso"),
+      antiguedad:buscar("ant")
+    };
+    $("avisoCatastro").textContent="Datos recuperados cuando estén disponibles. Comprueba y completa todos los campos.";
+    mostrarLocalizacion(direccion,ref,"catastro");
+    $("estadoBusqueda").textContent="Datos localizados. Comprueba el mapa.";
+  }catch(e){
+    $("estadoBusqueda").textContent="No se ha podido consultar el Catastro desde el navegador. Puede ser una restricción de conexión. Introduce la dirección manualmente. "+e.message;
+  }finally{
+    this.disabled=false;
+  }
+});
+
+$("continuarPaso2").addEventListener("click",function(){
+  if(!$("confirmarUbicacion").checked) return;
+
+  if(datosCatastro.superficie && !$("superficie").value)
+    $("superficie").value=datosCatastro.superficie;
+
+  if(datosCatastro.antiguedad && !$("anoConstruccion").value){
+    const a=Number(datosCatastro.antiguedad);
+    const actual=new Date().getFullYear();
+    $("anoConstruccion").value=a>1700&&a<=actual?a:(a>0&&a<=500?actual-a:"");
+  }
+
+  const uso=(datosCatastro.uso||"").toLowerCase();
+  if(uso.includes("residencial")||uso.includes("vivienda")) $("tipoInmueble").value="Piso";
+  if(uso.includes("comercial")) $("tipoInmueble").value="Local comercial";
+  if(uso.includes("oficina")) $("tipoInmueble").value="Oficina";
+  if(uso.includes("suelo")||uso.includes("parcela")) $("tipoInmueble").value="Terreno o parcela";
+
+  mostrarPaso(2);
+});
+
+$("volverPaso1").addEventListener("click",()=>mostrarPaso(1));
+$("volverPaso2").addEventListener("click",()=>mostrarPaso(2));
+
+function escaparHTML(t){
+  return String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;").replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+function campo(id){return $(id).value.trim();}
+function euros(n){
+  return new Intl.NumberFormat("es-ES",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(n);
+}
+
+/*
+PRECIOS DE EJEMPLO.
+No son datos actuales verificados.
+Actualiza esta tabla con precios reales por municipio antes de publicar.
+*/
+const PRECIOS_M2 = {
+  "Tarragona":1900,
+  "Barcelona":3000,
+  "Girona":2400,
+  "Lleida":1400,
+  "default":1800
+};
+
+function precioBase(provincia,tipo){
+  const p=Object.keys(PRECIOS_M2).find(k=>
+    k!=="default" && (provincia||"").toLowerCase().includes(k.toLowerCase())
+  );
+  let precio=PRECIOS_M2[p||"default"];
+
+  if(tipo==="Casa o chalet"||tipo==="Casa adosada") precio*=1.08;
+  if(tipo==="Ático") precio*=1.10;
+  if(tipo==="Terreno o parcela") precio*=0.35;
+  if(tipo==="Local comercial"||tipo==="Oficina") precio*=0.70;
+  if(tipo==="Otro") precio*=0.80;
+
+  return precio;
+}
+
+function calcularValoracion(d){
+  let factor=1;
+  const estado={
+    "A reformar":0.78,
+    "Regular":0.88,
+    "Buen estado":1,
+    "Reformado":1.10,
+    "Obra nueva":1.18
+  };
+  factor*=estado[d.estado]||1;
+
+  const ano=Number(d.ano||0);
+  if(ano>=2015) factor*=1.04;
+  else if(ano>0 && ano<1980) factor*=0.90;
+  else if(ano>=1980 && ano<2000) factor*=0.96;
+
+  const ajustes={
+    "Ascensor":0.03,"Terraza":0.04,"Balcón":0.015,
+    "Garaje":0.04,"Trastero":0.01,"Piscina comunitaria":0.025,
+    "Piscina privada":0.05,"Jardín":0.04,"Vistas al mar":0.08,
+    "Aire acondicionado":0.01,"Calefacción":0.01,"Exterior":0.02
+  };
+
+  let suma=0;
+  d.extras.forEach(e=>suma+=ajustes[e]||0);
+  factor*=1+Math.min(suma,0.15);
+
+  if(d.planta==="Bajo") factor*=0.97;
+  if(d.planta==="Ático") factor*=1.03;
+
+  const base=precioBase(d.provincia,d.tipo);
+  const precio=Math.round(Number(d.superficie)*base*factor);
+
+  return {
+    precio,
+    minimo:Math.round(precio*0.90),
+    maximo:Math.round(precio*1.10),
+    base:Math.round(base)
+  };
+}
+
+$("continuarPaso3").addEventListener("click",function(){
+  $("errorPaso2").textContent="";
+  const superficie=Number(campo("superficie"));
+  const util=Number(campo("superficieUtil"));
+  const ano=Number(campo("anoConstruccion"));
+  const actual=new Date().getFullYear();
+
+  if(!campo("tipoInmueble")){
+    $("errorPaso2").textContent="Selecciona el tipo de inmueble.";return;
+  }
+  if(!superficie||superficie<=0){
+    $("errorPaso2").textContent="Introduce una superficie construida válida.";return;
+  }
+  if(campo("superficieUtil")&&(!util||util<=0)){
+    $("errorPaso2").textContent="Comprueba la superficie útil.";return;
+  }
+  if(campo("superficieUtil")&&util>superficie){
+    $("errorPaso2").textContent="La superficie útil no puede superar la construida.";return;
+  }
+  if(campo("anoConstruccion")&&(ano<1700||ano>actual)){
+    $("errorPaso2").textContent="Comprueba el año de construcción.";return;
+  }
+
+  const extras=Array.from(document.querySelectorAll("#extras input:checked")).map(c=>c.value);
+  datosInmueble={
+    direccion:direccionConfirmada,
+    referencia:referenciaConfirmada||campo("referencia"),
+    provincia:campo("provincia"),
+    tipo:campo("tipoInmueble"),
+    superficie:superficie,
+    superficieUtil:campo("superficieUtil"),
+    habitaciones:campo("habitaciones"),
+    banos:campo("banos"),
+    ano:campo("anoConstruccion"),
+    planta:campo("planta"),
+    estado:campo("estadoVivienda"),
+    orientacion:campo("orientacion"),
+    extras,
+    observaciones:campo("observaciones"),
+    usoCatastro:datosCatastro.uso||""
+  };
+
+  const v=calcularValoracion(datosInmueble);
+  $("precioEstimado").textContent=euros(v.precio);
+  $("rangoEstimado").textContent="Rango orientativo: "+euros(v.minimo)+" – "+euros(v.maximo);
+  $("explicacionValoracion").textContent=
+    "Cálculo de ejemplo: "+euros(v.base)+" por m² × "+superficie+
+    " m², con ajustes por antigüedad, estado y extras. El precio base no está verificado con operaciones reales.";
+
+  const lineas=[
+    ["Dirección",datosInmueble.direccion],
+    ["Provincia",datosInmueble.provincia],
+    ["Referencia catastral",datosInmueble.referencia],
+    ["Tipo",datosInmueble.tipo],
+    ["Superficie construida",superficie+" m²"],
+    ["Superficie útil",datosInmueble.superficieUtil?datosInmueble.superficieUtil+" m²":"No indicada"],
+    ["Habitaciones",datosInmueble.habitaciones||"No indicadas"],
+    ["Baños",datosInmueble.banos||"No indicados"],
+    ["Año de construcción",datosInmueble.ano||"No indicado"],
+    ["Planta",datosInmueble.planta||"No indicada"],
+    ["Estado",datosInmueble.estado||"No indicado"],
+    ["Orientación",datosInmueble.orientacion||"No indicada"],
+    ["Extras",extras.length?extras.join(", "):"Ninguno indicado"],
+    ["Uso según Catastro",datosInmueble.usoCatastro||"No disponible"],
+    ["Observaciones",datosInmueble.observaciones||"Ninguna"],
+    ["Precio estimado",euros(v.precio)],
+    ["Rango orientativo",euros(v.minimo)+" – "+euros(v.maximo)]
+  ];
+
+  $("resumen").innerHTML=lineas.map(([t,val])=>
+    "<p><strong>"+escaparHTML(t)+":</strong> "+escaparHTML(val||"No indicado")+"</p>"
+  ).join("");
+
+  mostrarPaso(3);
+});
+
+$("copiarResumen").addEventListener("click",async function(){
+  const texto="VALORACIÓN ORIENTATIVA\n"+
+    $("resumen").innerText+
+    "\n\nAviso: cálculo automático con precios base de ejemplo; no es una tasación oficial.";
+
+  try{
+    await navigator.clipboard.writeText(texto);
+    $("estadoCopia").textContent="Valoración copiada. Puedes pegarla en un documento o correo.";
+  }catch(e){
+    const ta=document.createElement("textarea");
+    ta.value=texto;document.body.appendChild(ta);ta.select();
+    const ok=document.execCommand("copy");ta.remove();
+    $("estadoCopia").textContent=ok?"Valoración copiada.":"No se pudo copiar automáticamente.";
+  }
+});
+</script>
+</body>
+</html>
